@@ -17,7 +17,6 @@ class _DetailsPageState extends State<DetailsPage> {
 
   @override
   Widget build(BuildContext context) {
-    // Fetch the items for the selected subcategory
     List<ProductCard> items = subcategoryItems[subcategoryName] ?? [];
 
     return Scaffold(

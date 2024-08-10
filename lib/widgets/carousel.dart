@@ -10,14 +10,14 @@ class CarouselWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return CarouselSlider(
       options: CarouselOptions(
-        height: 400.0,
+        height: 200.0,
         enlargeCenterPage: true,
         autoPlay: true,
-        aspectRatio: 16 / 9,
-        autoPlayCurve: Curves.fastOutSlowIn,
+        aspectRatio: 1,
+        autoPlayCurve: Curves.linear,
         enableInfiniteScroll: true,
         autoPlayAnimationDuration: Duration(milliseconds: 800),
-        viewportFraction: 0.8,
+        viewportFraction: 1,
       ),
       items: imgList
           .map((item) => Container(
