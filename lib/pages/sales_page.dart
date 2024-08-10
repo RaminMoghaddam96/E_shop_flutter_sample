@@ -1,4 +1,7 @@
+import 'package:e_shop_flutter/models/category_classes.dart';
+import 'package:e_shop_flutter/pages/details_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../widgets/carousel.dart';
 
@@ -61,34 +64,47 @@ class _SalesPageState extends State<SalesPage> {
               height: 200,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: imgList2.length,
+                itemCount: categories.length,
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
-                  return Container(
-                    padding: EdgeInsets.all(5),
-                    width: 100,
-                    height: 200,
-                    child: Image.network(
-                      imgList2[index],
-                      fit: BoxFit.cover,
+                  return InkWell(
+                    onTap: () {
+                      Get.to(() => DetailsPage(),
+                          arguments: categories[index].name);
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(5),
+                      width: 100,
+                      height: 200,
+                      child: Image.asset(
+                        categories[index].image,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   );
                 },
               ),
             ),
+            const SizedBox(height: 20),
             GridView.builder(
-              itemCount: imgList2.length,
+              itemCount: categories.length,
               shrinkWrap: true,
               gridDelegate:
                   SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
               itemBuilder: (context, index) {
-                return Container(
-                  padding: EdgeInsets.all(5),
-                  width: 100,
-                  height: 200,
-                  child: Image.network(
-                    imgList2[index],
-                    fit: BoxFit.cover,
+                return InkWell(
+                  onTap: () {
+                    Get.to(() => DetailsPage(),
+                        arguments: categories[index].name);
+                  },
+                  child: Container(
+                    padding: EdgeInsets.all(5),
+                    width: 100,
+                    height: 200,
+                    child: Image.asset(
+                      categories[index].image,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 );
               },
