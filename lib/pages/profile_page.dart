@@ -1,4 +1,6 @@
+import 'package:e_shop_flutter/pages/favorites_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ProfilePage extends StatelessWidget {
   @override
@@ -16,7 +18,11 @@ class ProfilePage extends StatelessWidget {
           ),
           IconButton(
             icon: Icon(Icons.favorite),
-            onPressed: () {},
+            onPressed: () {
+              Get.to(
+                () => FavoritesPage(),
+              );
+            },
           ),
         ],
       ),

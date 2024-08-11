@@ -9,6 +9,7 @@ class ProductCard extends StatelessWidget {
   final double originalPrice;
   final double discountedPrice;
   final int reviews;
+  bool isFavorite;
 
   ProductCard({
     required this.discount,
@@ -19,6 +20,7 @@ class ProductCard extends StatelessWidget {
     required this.originalPrice,
     required this.discountedPrice,
     required this.reviews,
+    this.isFavorite = false,
   });
 
   @override
@@ -114,7 +116,7 @@ class ProductCard extends StatelessWidget {
                   shape: WidgetStatePropertyAll(CircleBorder()),
                   backgroundColor: WidgetStatePropertyAll(Colors.white),
                 ),
-                child: const Icon(Icons.favorite_border),
+                child:  Icon(Icons.favorite_border),
                 onPressed: () {},
               ),
             ],

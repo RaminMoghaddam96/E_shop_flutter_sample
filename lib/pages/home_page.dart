@@ -1,6 +1,7 @@
 import 'package:e_shop_flutter/models/brands.dart';
 import 'package:e_shop_flutter/models/category_classes.dart';
 import 'package:e_shop_flutter/pages/details_page.dart';
+import 'package:e_shop_flutter/pages/favorites_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -33,7 +34,11 @@ class _HomePageState extends State<HomePage> {
             icon: const Icon(Icons.notifications),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.to(
+                () => FavoritesPage(),
+              );
+            },
             icon: const Icon(Icons.favorite),
           ),
         ],

@@ -1,6 +1,9 @@
+import 'package:e_shop_flutter/pages/favorites_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../models/cart_item.dart';
+import '../utiles/controller.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
@@ -43,7 +46,11 @@ class _CartPageState extends State<CartPage> {
             icon: const Icon(Icons.notifications),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.to(
+                () => FavoritesPage(),
+              );
+            },
             icon: const Icon(Icons.favorite),
           ),
         ],

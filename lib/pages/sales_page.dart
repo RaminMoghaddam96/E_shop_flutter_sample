@@ -1,5 +1,6 @@
 import 'package:e_shop_flutter/models/category_classes.dart';
 import 'package:e_shop_flutter/pages/details_page.dart';
+import 'package:e_shop_flutter/utiles/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -44,7 +45,11 @@ class _SalesPageState extends State<SalesPage> {
             icon: const Icon(Icons.notifications),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.to(
+                () => FavoriteController(),
+              );
+            },
             icon: const Icon(Icons.favorite),
           ),
         ],
