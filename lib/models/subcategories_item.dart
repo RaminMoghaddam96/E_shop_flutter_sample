@@ -20,7 +20,7 @@ Map<String, List<ProductCard>> subcategoryItems = {
       rating: 5,
       originalPrice: 1200,
       discountedPrice: 1020,
-      reviews: 150,
+      reviews: 150, isFavorite: false,
     ),
     ProductCard(
       discount: '5%',

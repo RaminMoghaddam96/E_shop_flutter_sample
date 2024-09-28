@@ -1,7 +1,9 @@
 import 'package:e_shop_flutter/pages/cart_page.dart';
+import 'package:e_shop_flutter/pages/favorites_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../models/cart_item.dart';
 import '../models/product_cart.dart';
 import '../models/subcategories_item.dart';
 
@@ -17,7 +19,7 @@ class _DetailsPageState extends State<DetailsPage> {
 
   @override
   Widget build(BuildContext context) {
-    List<ProductCard> items = subcategoryItems[subcategoryName] ?? [];
+    List<ItemsList>? items = (subcategoryItems[subcategoryName] ?? []).cast<ItemsList>();
 
     return Scaffold(
       appBar: AppBar(
@@ -34,7 +36,9 @@ class _DetailsPageState extends State<DetailsPage> {
             icon: const Icon(Icons.search),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.to(() => FavoritesPage());
+            },
             icon: const Icon(Icons.favorite),
           ),
           IconButton(

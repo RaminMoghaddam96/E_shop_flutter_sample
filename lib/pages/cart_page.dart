@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../models/cart_item.dart';
-import '../utiles/controller.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
@@ -82,7 +81,7 @@ class _CartPageState extends State<CartPage> {
                             onPressed: () {}, icon: const Icon(Icons.close)),
                       ),
                       Container(
-                        width: 150,
+                        width: 200,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [

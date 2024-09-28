@@ -1,9 +1,7 @@
-import 'package:e_shop_flutter/models/product_cart.dart';
-import 'package:e_shop_flutter/utiles/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../models/subcategories_item.dart';
+import '../models/product_cart.dart';
+import '../utiles/controller.dart';
 
 class FavoritesPage extends StatefulWidget {
   const FavoritesPage({super.key});
@@ -19,40 +17,46 @@ class _FavoritesPageState extends State<FavoritesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Favorite',
+        title: const Text(
+          'Favorites',
           style: TextStyle(color: Colors.purple),
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.search),
+            icon: const Icon(Icons.search),
             onPressed: () {},
           ),
           IconButton(
-            icon: Icon(Icons.shopping_cart),
+            icon: const Icon(Icons.shopping_cart),
             onPressed: () {},
           ),
         ],
       ),
-      body: controller.items.isEmpty
-          ? Center(
-              child: Text('No favorite YEt'),
-            )
-          : ListView.builder(
-              shrinkWrap: true,
-              itemCount: controller.items.length,
-              itemBuilder: (context, index) {
-                return ProductCard(
-                    discount: controller.items[index].discount,
-                    imageUrl: controller.items[index].imageUrl,
-                    name: controller.items[index].name,
-                    size: controller.items[index].size,
-                    rating: controller.items[index].rating,
-                    originalPrice: controller.items[index].originalPrice,
-                    discountedPrice: controller.items[index].discountedPrice,
-                    reviews: controller.items[index].reviews);
-              },
-            ),
+      body: Obx(() {
+        final favoriteItems = controller.favoriteItems;
+
+        return favoriteItems.isEmpty
+            ? const Center(
+                child: Text('No Favorite Added Yet'),
+              )
+            : ListView.builder(
+                itemCount: favoriteItems.length,
+                itemBuilder: (context, index) {
+                  final item = favoriteItems[index];
+                  return ProductCard(
+                    discount: item.discount,
+                    imageUrl: item.imageUrl,
+                    name: item.name,
+                    size: item.size,
+                    rating: item.rating,
+                    originalPrice: item.originalPrice,
+                    discountedPrice: item.discountedPrice,
+                    reviews: item.reviews,
+                    isFavorite: item.isFavorite,
+                  );
+                },
+              );
+      }),
     );
   }
 }

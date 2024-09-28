@@ -22,7 +22,7 @@ class CarouselWidget extends StatelessWidget {
       items: imgList
           .map((item) => Container(
                 child: Center(
-                  child: Image.network(
+                  child: Image.asset(
                     item,
                     fit: BoxFit.cover,
                     width: 1000,

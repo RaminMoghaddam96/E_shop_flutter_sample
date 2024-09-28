@@ -1,4 +1,5 @@
 import 'package:e_shop_flutter/pages/details_page.dart';
+import 'package:e_shop_flutter/pages/favorites_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -37,7 +38,11 @@ class _CategoryPageState extends State<CategoryPage> {
             icon: const Icon(Icons.notifications, color: Colors.purple),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.to(
+                () => FavoritesPage(),
+              );
+            },
             icon: const Icon(Icons.favorite, color: Colors.purple),
           ),
         ],

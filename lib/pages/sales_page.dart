@@ -15,18 +15,11 @@ class SalesPage extends StatefulWidget {
 
 class _SalesPageState extends State<SalesPage> {
   final List<String> imgList = [
-    'https://via.placeholder.com/600x400/FF0000/FFFFFF?text=Image+1',
-    'https://via.placeholder.com/600x400/00FF00/FFFFFF?text=Image+2',
-    'https://via.placeholder.com/600x400/0000FF/FFFFFF?text=Image+3',
-    'https://via.placeholder.com/600x400/FFFF00/FFFFFF?text=Image+4',
-    'https://via.placeholder.com/600x400/FF00FF/FFFFFF?text=Image+5',
+    'assets/brands/apple.jpg',
+    'assets/brands/apple.jpg',
   ];
   final List<String> imgList2 = [
-    'https://via.placeholder.com/200x200/000000/FFFFFF?text=Image+1',
-    'https://via.placeholder.com/200x200/00FF00/FFFFFF?text=Image+2',
-    'https://via.placeholder.com/200x200/0000FF/FFFFFF?text=Image+3',
-    'https://via.placeholder.com/200x200/FFFF00/FFFFFF?text=Image+4',
-    'https://via.placeholder.com/200x200/FF00FF/FFFFFF?text=Image+5',
+    'assets/brands/apple.jpg',
   ];
   @override
   Widget build(BuildContext context) {

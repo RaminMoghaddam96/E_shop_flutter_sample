@@ -43,3 +43,27 @@ final List<CartItem> cartItems = [
     discount: 0,
   ),
 ];
+
+class ItemsList {
+  final String? discount;
+  final String imageUrl;
+  final String name;
+  final String size;
+  final int rating;
+  final double originalPrice;
+  final double discountedPrice;
+  final int reviews;
+  bool isFavorite;
+
+  ItemsList({
+    required this.discount,
+    required this.imageUrl,
+    required this.name,
+    required this.size,
+    required this.rating,
+    required this.originalPrice,
+    required this.discountedPrice,
+    required this.reviews,
+    this.isFavorite = false,
+  });
+}

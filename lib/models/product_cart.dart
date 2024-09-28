@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class ProductCard extends StatelessWidget {
+import '../utiles/controller.dart';
+
+class ProductCard extends StatefulWidget {
   final String? discount;
   final String imageUrl;
   final String name;
@@ -24,105 +27,125 @@ class ProductCard extends StatelessWidget {
   });
 
   @override
+  State<ProductCard> createState() => _ProductCardState();
+}
+
+class _ProductCardState extends State<ProductCard> {
+  @override
   Widget build(BuildContext context) {
-    return Stack(
-      clipBehavior: Clip.none,
-      children: [
-        Container(
-          color: Colors.white,
-          margin: const EdgeInsets.all(8.0),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Stack(
-              children: [
-                Row(
-                  children: [
-                    Image.asset(
-                      imageUrl,
-                      width: 80,
-                      height: 80,
-                    ),
-                    const SizedBox(width: 8.0),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            name,
-                            style: const TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text('Size: $size'),
-                          Row(
-                            children: List.generate(5, (index) {
-                              return Icon(
-                                index < rating ? Icons.star : Icons.star_border,
-                                color: Colors.orange,
-                                size: 16.0,
-                              );
-                            }),
-                          ),
-                          Text('\$$discountedPrice',
+    final FavoriteController controller = Get.put(FavoriteController());
+    return Obx(
+      () => Stack(
+        clipBehavior: Clip.none,
+        children: [
+          Container(
+            color: Colors.white,
+            margin: const EdgeInsets.all(8.0),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Stack(
+                children: [
+                  Row(
+                    children: [
+                      Image.asset(
+                        widget.imageUrl,
+                        width: 80,
+                        height: 80,
+                      ),
+                      const SizedBox(width: 8.0),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              widget.name,
                               style: const TextStyle(
-                                  fontSize: 16.0, fontWeight: FontWeight.bold)),
-                          Text(
-                            '\$$originalPrice',
-                            style: const TextStyle(
-                              decoration: TextDecoration.lineThrough,
-                              color: Colors.grey,
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                        ],
+                            Text('Size: ${widget.size}'),
+                            Row(
+                              children: List.generate(5, (index) {
+                                return Icon(
+                                  index < widget.rating
+                                      ? Icons.star
+                                      : Icons.star_border,
+                                  color: Colors.orange,
+                                  size: 16.0,
+                                );
+                              }),
+                            ),
+                            Text(
+                              '\$${widget.discountedPrice}',
+                              style: const TextStyle(
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              '\$${widget.originalPrice}',
+                              style: const TextStyle(
+                                decoration: TextDecoration.lineThrough,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  if (widget.discount != null) // Check if discount is not null
+                    Container(
+                      width: 40,
+                      padding: const EdgeInsets.only(right: 5, left: 5),
+                      color: Colors.red,
+                      child: Text(
+                        textAlign: TextAlign.center,
+                        widget.discount!,
+                        style: const TextStyle(
+                          color: Colors.white,
+                        ),
                       ),
                     ),
-                  ],
-                ),
-                Container(
-                  width: 40,
-                  padding: const EdgeInsets.only(right: 5, left: 5),
-                  color: Colors.red,
-                  child: Text(
-                    textAlign: TextAlign.center,
-                    discount!,
-                    style: const TextStyle(
-                      color: Colors.white,
-                    ),
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: -10,
+            right: 10,
+            child: Row(
+              children: [
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: const CircleBorder(),
+                    padding: const EdgeInsets.all(8.0),
+                    backgroundColor: Colors.white,
                   ),
+                  child: const Icon(Icons.shopping_cart),
+                  onPressed: () {},
+                ),
+                const SizedBox(width: 5),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: const CircleBorder(),
+                    padding: const EdgeInsets.all(8.0),
+                    backgroundColor: Colors.white,
+                  ),
+                  child: Icon(
+                    widget.isFavorite ? Icons.favorite : Icons.favorite_border,
+                    color: widget.isFavorite ? Colors.red : Colors.grey,
+                  ),
+                  onPressed: () {
+                    controller.toggleFavorite(widget);
+                  },
                 ),
               ],
             ),
           ),
-        ),
-        Positioned(
-          bottom: -10,
-          right: 10,
-          child: Row(
-            children: [
-              ElevatedButton(
-                style: const ButtonStyle(
-                  elevation: WidgetStatePropertyAll(1),
-                  shape: WidgetStatePropertyAll(CircleBorder()),
-                  backgroundColor: WidgetStatePropertyAll(Colors.white),
-                ),
-                child: const Icon(Icons.shopping_cart),
-                onPressed: () {},
-              ),
-              const SizedBox(width: 5),
-              ElevatedButton(
-                style: const ButtonStyle(
-                  elevation: WidgetStatePropertyAll(1),
-                  shape: WidgetStatePropertyAll(CircleBorder()),
-                  backgroundColor: WidgetStatePropertyAll(Colors.white),
-                ),
-                child:  Icon(Icons.favorite_border),
-                onPressed: () {},
-              ),
-            ],
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
