@@ -16,10 +16,15 @@ class SalesPage extends StatefulWidget {
 class _SalesPageState extends State<SalesPage> {
   final List<String> imgList = [
     'assets/brands/apple.jpg',
-    'assets/brands/apple.jpg',
+    'assets/brands/lenovo.jpg',
+    'assets/brands/PLUS.png',
+    'assets/brands/puma.jpg',
   ];
   final List<String> imgList2 = [
     'assets/brands/apple.jpg',
+    'assets/brands/lenovo.jpg',
+    'assets/brands/PLUS.png',
+    'assets/brands/puma.jpg',
   ];
   @override
   Widget build(BuildContext context) {
@@ -50,12 +55,20 @@ class _SalesPageState extends State<SalesPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            CarouselWidget(
-              imgList: imgList,
+            SizedBox(
+              width: MediaQuery.of(context).size.width -50,
+              height: 200,
+              child: CarouselWidget(
+                imgList: imgList,
+              ),
             ),
             SizedBox(height: 10),
-            CarouselWidget(
-              imgList: imgList,
+            SizedBox(
+              width: 200,
+              height: 200,
+              child: CarouselWidget(
+                imgList: imgList,
+              ),
             ),
             SizedBox(
               width: 400,

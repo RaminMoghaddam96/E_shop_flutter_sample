@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 
 class CarouselWidget extends StatelessWidget {
   final List<String> imgList;
@@ -8,24 +7,29 @@ class CarouselWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CarouselSlider(
-      options: CarouselOptions(
-        height: 200.0,
-        enlargeCenterPage: true,
-        autoPlay: true,
-        aspectRatio: 1,
-        autoPlayCurve: Curves.linear,
-        enableInfiniteScroll: true,
-        autoPlayAnimationDuration: Duration(milliseconds: 800),
-        viewportFraction: 1,
-      ),
-      items: imgList
+    return CarouselView(
+      itemSnapping: true,
+      padding: EdgeInsets.all(8),
+      elevation: 20,
+      itemExtent: 200,
+      // options: CarouselOptions(
+      //   height: 200.0,
+      //   enlargeCenterPage: true,
+      //   autoPlay: true,
+      //   aspectRatio: 1,
+      //   autoPlayCurve: Curves.linear,
+      //   enableInfiniteScroll: true,
+      //   autoPlayAnimationDuration: Duration(milliseconds: 800),
+      //   viewportFraction: 1,
+      // ),
+      children: imgList
           .map((item) => Container(
+                color: Colors.green,
                 child: Center(
                   child: Image.asset(
                     item,
                     fit: BoxFit.cover,
-                    width: 1000,
+                    width: 500,
                   ),
                 ),
               ))
