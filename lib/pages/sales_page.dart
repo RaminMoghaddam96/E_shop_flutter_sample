@@ -56,7 +56,7 @@ class _SalesPageState extends State<SalesPage> {
         child: Column(
           children: [
             SizedBox(
-              width: MediaQuery.of(context).size.width -50,
+              width: MediaQuery.of(context).size.width - 20,
               height: 200,
               child: CarouselWidget(
                 imgList: imgList,
@@ -64,7 +64,7 @@ class _SalesPageState extends State<SalesPage> {
             ),
             SizedBox(height: 10),
             SizedBox(
-              width: 200,
+              width: MediaQuery.of(context).size.width - 20,
               height: 200,
               child: CarouselWidget(
                 imgList: imgList,

@@ -24,12 +24,11 @@ class CarouselWidget extends StatelessWidget {
       // ),
       children: imgList
           .map((item) => Container(
-                color: Colors.green,
+                padding: EdgeInsets.all(5),
                 child: Center(
                   child: Image.asset(
                     item,
                     fit: BoxFit.cover,
-                    width: 500,
                   ),
                 ),
               ))
