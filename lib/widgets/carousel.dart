@@ -4,7 +4,7 @@ class CarouselWidget extends StatelessWidget {
   final List<String> imgList;
 
   const CarouselWidget({super.key, required this.imgList});
-
+ 
   @override
   Widget build(BuildContext context) {
     return CarouselView(
